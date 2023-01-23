@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Available Products">
+		<span if:true={errorMessage} class="slds-notify slds-notify_alert slds-alert_error">{errorMessage}</span>
+		<div if:false={errorMessage} style="height: 500px">
+			<lightning-datatable
+				key-field="Id"
+				data={products}
+				columns={columns}
+				onrowselection={onRowSelectionHandler}
+				enable-infinite-loading
+				onloadmore={onLoadMoreDataHandler}
+				resize-column-disabled
+			></lightning-datatable>
+		</div>
+		<div slot="footer" class="slds-grid" if:false={errorMessage}>
+			<span class="slds-size_6-of-12 slds-text-align_left"><span if:true={selectedProducts.length}>Selected {selectedProducts.length} Products.</span></span>
+			<span class="slds-size_6-of-12 slds-text-align_right">Showing {products.length} out of {allProducts.length}.</span>
+		</div>
+		<lightning-button
+			if:false={errorMessage}
+			label="Add to Order"
+			slot="actions"
+			onclick={onAddToOrderClickHandler}
+			disabled={addToOrderDisabled}
+		></lightning-button>
+	</lightning-card>
+</template>

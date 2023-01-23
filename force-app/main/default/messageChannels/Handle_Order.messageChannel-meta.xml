@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>HandleOrder</masterLabel>
+    <isExposed>true</isExposed>
+    <description>Message Channel for Order</description>
+     <lightningMessageFields>
+        <fieldName>fetch</fieldName>
+        <description>To fetch new Order Items.</description>
+    </lightningMessageFields>
+     <lightningMessageFields>
+        <fieldName>deactivate</fieldName>
+        <description>End user will not be able to add new Order Items or confirm the order for a second time.</description>
+    </lightningMessageFields>
+</LightningMessageChannel>

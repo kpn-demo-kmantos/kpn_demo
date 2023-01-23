@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title="Order Products">
+		<span if:true={errorMessage} class="slds-notify slds-notify_alert slds-alert_error">{errorMessage}</span>
+		<div if:false={errorMessage} style="height: 500px">
+			<lightning-datatable
+				class="orderItems"
+				key-field="Id"
+				data={products}
+				columns={columns}
+				hide-checkbox-column
+				enable-infinite-loading
+				onloadmore={onLoadMoreDataHandler}
+				resize-column-disabled
+			></lightning-datatable>
+		</div>
+		<div slot="footer" if:false={errorMessage}>Showing {products.length} out of {allProducts.length}.</div>
+		<lightning-button
+			if:false={errorMessage}
+			label="Confirm Order"
+			slot="actions"
+			onclick={onConfirmOrderClickHandler}
+			disabled={disableConfirmOrder}
+		></lightning-button>
+	</lightning-card>
+</template>
